@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState,useContext } from 'react'
 import './App.css'
 import Hello from './components/Hello';
 import Navbar from './components/Navbar';
@@ -7,6 +7,12 @@ import myimage from './assets/myimage.jpg';
 import User_Exist from './components/User_Exist';
 import User_Not from './components/User_Not';
 import Count_Check from './components/Count_check';
+import { ThemeProvider,ThemeContext } from './components/Theme';
+
+function ThemeContent() {
+  const { Theme } = useContext(ThemeContext);
+  return <h1>{Theme}</h1>;
+}
 
 function App() {
   const [User, setUser] = useState(false)
@@ -44,7 +50,11 @@ function App() {
       <button onClick={Handle_increase}>Increase</button>
       <h1>{count}</h1>
       <button onClick={Handle_decrease}>Decrease</button> */}
-
+      {<ThemeProvider>
+        
+        <ThemeContent />
+      </ThemeProvider>
+}
       <Count_Check />
     
     </>
